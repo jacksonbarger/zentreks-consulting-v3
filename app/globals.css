@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Zentreks Color Palette - EY-inspired professional design */
+  --background: #0D0D0D;
+  --foreground: #ffffff;
+  --card-bg: #1A1717;
+  --card-border: #231F1F;
+
+  /* Brand Colors */
+  --zentreks-red: #C4251D;
+  --zentreks-red-dark: #8B1A15;
+  --zentreks-gold: #D4A574;
+  --zentreks-gold-light: #E5C4A1;
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #C4B8B8;
+  --text-muted: #8A7F7F;
+
+  /* Section backgrounds */
+  --section-dark: #0D0D0D;
+  --section-medium: #1A1717;
+  --section-light: #231F1F;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card-bg);
+  --color-border: var(--card-border);
+  --color-red: var(--zentreks-red);
+  --color-gold: var(--zentreks-gold);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--section-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--zentreks-red);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--zentreks-gold);
+}
+
+/* Button styles - EY-inspired */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: var(--zentreks-red);
+  color: white;
+  font-weight: 600;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  border: 2px solid var(--zentreks-red);
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--zentreks-red);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  border-radius: 0;
+  border: 2px solid var(--zentreks-gold);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--zentreks-gold);
+  color: var(--background);
+}
+
+/* Gold gradient text - for headlines */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--zentreks-gold) 0%, var(--zentreks-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Red gradient text */
+.text-gradient-red {
+  background: linear-gradient(135deg, var(--zentreks-red) 0%, #ff4444 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: var(--zentreks-red);
+}
+
+/* EY-style italic headline */
+.headline-italic {
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Mega menu styles */
+.mega-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.mega-menu-trigger:hover .mega-menu,
+.mega-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--zentreks-gold);
+  outline-offset: 2px;
+}
+
+/* Animation utilities */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--zentreks-gold), transparent);
 }
