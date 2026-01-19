@@ -73,7 +73,7 @@ export default function EventsPage() {
   }, [searchQuery, selectedType, selectedRegion, selectedMonth]);
 
   const hasActiveFilters =
-    searchQuery ||
+    !!searchQuery ||
     selectedType !== "All Types" ||
     selectedRegion !== "All Regions" ||
     selectedMonth !== "All Months";
