@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -209,8 +210,9 @@ const ARTICLES: Record<string, {
   }
 };
 
-export default function InsightArticlePage({ params }: { params: { slug: string } }) {
-  const article = ARTICLES[params.slug];
+export default function InsightArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
+  const article = ARTICLES[slug];
 
   if (!article) {
     notFound();
