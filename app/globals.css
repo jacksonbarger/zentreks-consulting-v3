@@ -1,27 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Zentreks Color Palette - EY-inspired professional design */
+  /* Zentreks Color Palette - Red & Black Bold Design */
   --background: #0D0D0D;
   --foreground: #ffffff;
-  --card-bg: #1A1717;
-  --card-border: #231F1F;
+  --card-bg: #141414;
+  --card-border: #2A2A2A;
 
-  /* Brand Colors */
+  /* Brand Colors - Red (matches logo) */
   --zentreks-red: #C4251D;
-  --zentreks-red-dark: #8B1A15;
-  --zentreks-gold: #D4A574;
-  --zentreks-gold-light: #E5C4A1;
+  --zentreks-red-dark: #8B1A14;
+  --zentreks-red-light: #D4453D;
+  --zentreks-accent: #D4A574;
+  --zentreks-accent-light: #E8C9A8;
+
+  /* Legacy aliases for compatibility */
+  --zentreks-navy: var(--zentreks-red);
+  --zentreks-navy-dark: var(--zentreks-red-dark);
+  --zentreks-navy-light: var(--zentreks-red-light);
+  --zentreks-gold: var(--zentreks-accent);
+  --zentreks-gold-light: var(--zentreks-accent-light);
 
   /* Text Colors */
   --text-primary: #ffffff;
   --text-secondary: #C4B8B8;
-  --text-muted: #8A7F7F;
+  --text-muted: #8A7A7A;
 
   /* Section backgrounds */
-  --section-dark: #0D0D0D;
-  --section-medium: #1A1717;
-  --section-light: #231F1F;
+  --section-dark: #0A0A0A;
+  --section-medium: #141414;
+  --section-light: #1E1E1E;
 }
 
 @theme inline {
@@ -30,7 +38,10 @@
   --color-card: var(--card-bg);
   --color-border: var(--card-border);
   --color-red: var(--zentreks-red);
-  --color-gold: var(--zentreks-gold);
+  --color-accent: var(--zentreks-accent);
+  /* Legacy aliases */
+  --color-navy: var(--zentreks-red);
+  --color-gold: var(--zentreks-accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -60,7 +71,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--zentreks-red);
+  background: var(--zentreks-navy);
   border-radius: 4px;
 }
 
@@ -68,23 +79,24 @@ html {
   background: var(--zentreks-gold);
 }
 
-/* Button styles - EY-inspired */
+/* Button styles - Professional */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.875rem 2rem;
-  background: var(--zentreks-red);
+  background: var(--zentreks-navy);
   color: white;
   font-weight: 600;
   border-radius: 0;
   transition: all 0.3s ease;
-  border: 2px solid var(--zentreks-red);
+  border: 2px solid var(--zentreks-navy);
 }
 
 .btn-primary:hover {
-  background: transparent;
-  color: var(--zentreks-red);
+  background: var(--zentreks-navy-light);
+  border-color: var(--zentreks-navy-light);
+  color: white;
 }
 
 .btn-secondary {
@@ -105,17 +117,19 @@ html {
   color: var(--background);
 }
 
-/* Gold gradient text - for headlines */
-.text-gradient-gold {
-  background: linear-gradient(135deg, var(--zentreks-gold) 0%, var(--zentreks-gold-light) 100%);
+/* Accent gradient text - for headlines */
+.text-gradient-gold,
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--zentreks-accent) 0%, var(--zentreks-accent-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* Red gradient text */
-.text-gradient-red {
-  background: linear-gradient(135deg, var(--zentreks-red) 0%, #ff4444 100%);
+.text-gradient-red,
+.text-gradient-navy {
+  background: linear-gradient(135deg, var(--zentreks-red) 0%, var(--zentreks-red-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -128,7 +142,7 @@ html {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  border-color: var(--zentreks-red);
+  border-color: var(--zentreks-gold);
 }
 
 /* EY-style italic headline */

@@ -1,0 +1,30 @@
+{
+  "name": "zentreks-newsletter-agent",
+  "version": "1.0.0",
+  "description": "Automated newsletter generator for Zentreks Consulting - fetches AI & tech news from RSS feeds",
+  "main": "run.ts",
+  "scripts": {
+    "generate": "ts-node run.ts",
+    "preview": "ts-node -e \"import { previewNewsletter } from './generate-newsletter'; previewNewsletter().then(console.log)\"",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "newsletter",
+    "rss",
+    "ai",
+    "tech",
+    "automation"
+  ],
+  "author": "Zentreks Consulting",
+  "license": "MIT",
+  "dependencies": {
+    "rss-parser": "^3.13.0",
+    "date-fns": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3",
+    "ts-node": "^10.9.2"
+  }
+}

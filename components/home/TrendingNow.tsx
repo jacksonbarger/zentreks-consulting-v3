@@ -9,7 +9,7 @@ export default function TrendingNow() {
   return (
     <section className="py-20 bg-[#0D0D0D]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - Updated colors */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ export default function TrendingNow() {
           <div className="w-16 h-1 bg-[#C4251D]" />
         </motion.div>
 
-        {/* Cards Grid */}
+        {/* Cards Grid - Updated colors */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TRENDING_INSIGHTS.map((insight, index) => (
             <motion.div
@@ -35,7 +35,7 @@ export default function TrendingNow() {
             >
               <Link
                 href={insight.href}
-                className="block h-full bg-[#1A1717] border border-[#231F1F] p-6 card-hover group"
+                className="block h-full bg-[#141414] border border-[#2A2A2A] p-6 card-hover group"
               >
                 {/* Category Badge */}
                 <div className="inline-flex items-center px-3 py-1 bg-[#C4251D]/10 border border-[#C4251D]/30 text-[#C4251D] text-xs font-medium mb-4">
@@ -48,13 +48,13 @@ export default function TrendingNow() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#8A7F7F] text-sm mb-4 line-clamp-3">
+                <p className="text-[#8A7A7A] text-sm mb-4 line-clamp-3">
                   {insight.description}
                 </p>
 
                 {/* Footer */}
-                <div className="flex items-center justify-between pt-4 border-t border-[#231F1F]">
-                  <span className="text-xs text-[#8A7F7F]">{insight.date}</span>
+                <div className="flex items-center justify-between pt-4 border-t border-[#2A2A2A]">
+                  <span className="text-xs text-[#8A7A7A]">{insight.date}</span>
                   <span className="text-[#D4A574] flex items-center gap-1 text-sm font-medium group-hover:gap-2 transition-all">
                     Read more
                     <ArrowRight size={14} />
@@ -65,7 +65,7 @@ export default function TrendingNow() {
           ))}
         </div>
 
-        {/* View All Link */}
+        {/* View All Link - Updated colors */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

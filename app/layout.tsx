@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Zentreks Consulting | AI-First Strategic Consulting",
-  description: "Transform your business with AI-powered strategic consulting. Expert guidance in AI integration, workflow optimization, and digital transformation.",
-  keywords: ["consulting", "AI", "strategy", "digital transformation", "business consulting"],
+  title: "Zentreks Consulting | Strategic Consulting Since 2008",
+  description: "Zentreks Consulting has been helping technology companies with their toughest business challenges for over 15 years. Expert guidance in AI integration, workflow optimization, and digital transformation.",
+  keywords: ["consulting", "AI", "strategy", "digital transformation", "business consulting", "tech startups", "MarTech", "enterprise technology"],
 };
 
 export default function RootLayout({

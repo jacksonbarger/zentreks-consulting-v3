@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { CASE_STUDIES } from "@/lib/constants";
 
@@ -30,7 +31,7 @@ export default function CaseStudies() {
   return (
     <section className="py-20 bg-[#0D0D0D]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - Updated colors */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +54,7 @@ export default function CaseStudies() {
           </Link>
         </motion.div>
 
-        {/* Carousel */}
+        {/* Carousel - Updated colors */}
         <div className="relative">
           {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -66,18 +67,17 @@ export default function CaseStudies() {
               >
                 <Link
                   href={caseStudy.href}
-                  className="block bg-[#1A1717] border border-[#231F1F] overflow-hidden card-hover group h-full"
+                  className="block bg-[#141414] border border-[#2A2A2A] overflow-hidden card-hover group h-full"
                 >
-                  {/* Image placeholder */}
-                  <div className="relative h-48 bg-gradient-to-br from-[#231F1F] to-[#1A1717] overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1717] to-transparent z-10" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 bg-[#C4251D]/10 rounded-lg flex items-center justify-center">
-                        <span className="text-[#D4A574] text-3xl font-bold">
-                          {caseStudy.category.charAt(0)}
-                        </span>
-                      </div>
-                    </div>
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={caseStudy.image}
+                      alt={caseStudy.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent z-10" />
                   </div>
 
                   {/* Content */}
@@ -93,7 +93,7 @@ export default function CaseStudies() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-[#8A7F7F] text-sm mb-4 line-clamp-2">
+                    <p className="text-[#8A7A7A] text-sm mb-4 line-clamp-2">
                       {caseStudy.description}
                     </p>
 
@@ -108,11 +108,11 @@ export default function CaseStudies() {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
+          {/* Navigation Buttons - Updated colors */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 bg-[#1A1717] border border-[#231F1F] flex items-center justify-center text-[#C4B8B8] hover:text-white hover:border-[#C4251D] transition-colors"
+              className="w-12 h-12 bg-[#141414] border border-[#2A2A2A] flex items-center justify-center text-[#C4B8B8] hover:text-white hover:border-[#C4251D] transition-colors"
             >
               <ChevronLeft size={20} />
             </button>
@@ -124,7 +124,7 @@ export default function CaseStudies() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentIndex ? "bg-[#C4251D]" : "bg-[#231F1F]"
+                    index === currentIndex ? "bg-[#C4251D]" : "bg-[#2A2A2A]"
                   }`}
                 />
               ))}
@@ -132,14 +132,14 @@ export default function CaseStudies() {
 
             <button
               onClick={nextSlide}
-              className="w-12 h-12 bg-[#1A1717] border border-[#231F1F] flex items-center justify-center text-[#C4B8B8] hover:text-white hover:border-[#C4251D] transition-colors"
+              className="w-12 h-12 bg-[#141414] border border-[#2A2A2A] flex items-center justify-center text-[#C4B8B8] hover:text-white hover:border-[#C4251D] transition-colors"
             >
               <ChevronRight size={20} />
             </button>
           </div>
         </div>
 
-        {/* Mobile View All Link */}
+        {/* Mobile View All Link - Updated colors */}
         <div className="sm:hidden mt-8 text-center">
           <Link
             href="/case-studies"

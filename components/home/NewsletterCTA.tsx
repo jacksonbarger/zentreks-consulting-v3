@@ -17,14 +17,14 @@ export default function NewsletterCTA() {
   };
 
   return (
-    <section className="py-16 bg-[#1A1717]">
+    <section className="py-16 bg-[#141414]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-[#C4251D]/10 to-[#D4A574]/10 border border-[#231F1F] p-8 md:p-12"
+          className="bg-gradient-to-r from-[#C4251D]/10 to-[#D4A574]/10 border border-[#2A2A2A] p-8 md:p-12"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             {/* Text */}
@@ -40,14 +40,14 @@ export default function NewsletterCTA() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8A7F7F]" size={20} />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8A7A7A]" size={20} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   required
-                  className="w-full md:w-80 pl-12 pr-4 py-4 bg-[#0D0D0D] border border-[#231F1F] text-white placeholder-[#8A7F7F] focus:outline-none focus:border-[#C4251D] transition-colors"
+                  className="w-full md:w-80 pl-12 pr-4 py-4 bg-[#0D0D0D] border border-[#2A2A2A] text-white placeholder-[#8A7A7A] focus:outline-none focus:border-[#C4251D] transition-colors"
                 />
               </div>
               <button
