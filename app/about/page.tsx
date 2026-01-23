@@ -35,6 +35,14 @@ const LEADERSHIP_TEAM = [
 
 const CONTRIBUTORS = [
   {
+    name: "Kelly Davenport, M.Ed., CID, NCIDQ, IIDA",
+    role: "Sr Consultant: Property & Education Systems",
+    bio: "Kelly brings over 15 years of leadership at the intersection of learning, design, and strategy. With deep roots in workplace transformation, education, and interior systems, she helps organizations align their physical environments with operational goals and human needs. At Zentreks, Kelly focuses on property-based systems, facilities strategy, and education sector transformation—bridging people, place, and performance with insight and empathy. Her background spans the California Department of General Services, One Workplace, Herman Miller, and academia.",
+    image: "/images/kelly-davenport.jpeg",
+    imagePosition: "center 30%",
+    linkedIn: "https://www.linkedin.com/in/davenport1/",
+  },
+  {
     name: "Jackson Barger",
     role: "Consultant: AI Workflow, AEO and Web Optimization",
     bio: "A bilingual consultant specializing in AI-driven workflow automation and algorithmic enterprise optimization (AEO), Jackson brings a rare blend of healthcare, CRM, and technical implementation expertise. He architected intelligent systems that streamline operations, automate customer journeys, and maximize digital performance. His focus lies in leveraging AI to deliver measurable improvements in web performance, CX automation, and lead-to-conversion efficiency for growth-oriented organizations.",
@@ -49,14 +57,6 @@ const CONTRIBUTORS = [
     image: "/images/val.png",
     imagePosition: "center 20%",
     linkedIn: "https://www.linkedin.com/in/val-heffernan-4b823b379/",
-  },
-  {
-    name: "Kelly Davenport, M.Ed., CID, NCIDQ, IIDA",
-    role: "Sr Consultant: Property & Education Systems",
-    bio: "Kelly brings over 15 years of leadership at the intersection of learning, design, and strategy. With deep roots in workplace transformation, education, and interior systems, she helps organizations align their physical environments with operational goals and human needs. At Zentreks, Kelly focuses on property-based systems, facilities strategy, and education sector transformation—bridging people, place, and performance with insight and empathy. Her background spans the California Department of General Services, One Workplace, Herman Miller, and academia.",
-    image: "/images/kelly-davenport.jpeg",
-    imagePosition: "center 30%",
-    linkedIn: "https://www.linkedin.com/in/davenport1/",
   },
 ];
 
