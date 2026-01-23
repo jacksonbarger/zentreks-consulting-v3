@@ -4,41 +4,88 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
-  Phone,
   MapPin,
   Clock,
   Send,
   CheckCircle,
   Calendar,
   ArrowRight,
+  AlertCircle,
 } from "lucide-react";
 import { BUSINESS_INFO } from "@/lib/constants";
 
+interface FormErrors {
+  general?: string;
+  fields?: string[];
+}
+
 export default function ContactPage() {
   const [formState, setFormState] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     company: "",
     phone: "",
     service: "",
     message: "",
+    // Honeypot field - hidden from users, bots will fill it
+    website: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setErrors({});
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          email: formState.email,
+          company: formState.company || undefined,
+          message: `[Service: ${formState.service || "Not specified"}]\n\n${formState.message}`,
+          // Include honeypot field
+          website: formState.website,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        if (response.status === 429) {
+          setErrors({ general: "Too many requests. Please try again later." });
+        } else if (data.errors) {
+          setErrors({ fields: data.errors });
+        } else {
+          setErrors({ general: data.message || "Something went wrong. Please try again." });
+        }
+        return;
+      }
+
+      setIsSubmitted(true);
+    } catch {
+      setErrors({ general: "Network error. Please check your connection and try again." });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // Clear errors when user starts typing
+    if (errors.general || errors.fields) {
+      setErrors({});
+    }
   };
 
   return (
@@ -92,12 +139,14 @@ export default function ContactPage() {
                     onClick={() => {
                       setIsSubmitted(false);
                       setFormState({
-                        name: "",
+                        firstName: "",
+                        lastName: "",
                         email: "",
                         company: "",
                         phone: "",
                         service: "",
                         message: "",
+                        website: "",
                       });
                     }}
                     className="btn-secondary"
@@ -107,19 +156,69 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Error Display */}
+                  {(errors.general || errors.fields) && (
+                    <div className="bg-red-900/20 border border-red-500/30 p-4 flex items-start gap-3">
+                      <AlertCircle size={20} className="text-red-400 flex-shrink-0 mt-0.5" />
+                      <div>
+                        {errors.general && (
+                          <p className="text-red-400">{errors.general}</p>
+                        )}
+                        {errors.fields && (
+                          <ul className="text-red-400 list-disc list-inside">
+                            {errors.fields.map((error, i) => (
+                              <li key={i}>{error}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Honeypot field - hidden from users */}
+                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={formState.website}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm text-[#B8C5D6] mb-2">Full Name *</label>
+                      <label className="block text-sm text-[#B8C5D6] mb-2">First Name *</label>
                       <input
                         type="text"
-                        name="name"
-                        value={formState.name}
+                        name="firstName"
+                        value={formState.firstName}
                         onChange={handleChange}
                         required
+                        maxLength={100}
                         className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors"
-                        placeholder="John Smith"
+                        placeholder="John"
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm text-[#B8C5D6] mb-2">Last Name *</label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={formState.lastName}
+                        onChange={handleChange}
+                        required
+                        maxLength={100}
+                        className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors"
+                        placeholder="Smith"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm text-[#B8C5D6] mb-2">Work Email *</label>
                       <input
@@ -128,13 +227,11 @@ export default function ContactPage() {
                         value={formState.email}
                         onChange={handleChange}
                         required
+                        maxLength={254}
                         className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors"
                         placeholder="john@company.com"
                       />
                     </div>
-                  </div>
-
-                  <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm text-[#B8C5D6] mb-2">Company</label>
                       <input
@@ -142,10 +239,14 @@ export default function ContactPage() {
                         name="company"
                         value={formState.company}
                         onChange={handleChange}
+                        maxLength={200}
                         className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors"
                         placeholder="Company Name"
                       />
                     </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm text-[#B8C5D6] mb-2">Phone</label>
                       <input
@@ -153,31 +254,30 @@ export default function ContactPage() {
                         name="phone"
                         value={formState.phone}
                         onChange={handleChange}
+                        maxLength={30}
                         className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors"
                         placeholder="(555) 123-4567"
                       />
                     </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm text-[#B8C5D6] mb-2">
-                      What can we help you with? *
-                    </label>
-                    <select
-                      name="service"
-                      value={formState.service}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white focus:outline-none focus:border-[#1E3A5F] transition-colors"
-                    >
-                      <option value="">Select a service area</option>
-                      <option value="ai-integration">AI Integration</option>
-                      <option value="strategy">Strategy Consulting</option>
-                      <option value="workflow">Workflow Optimization</option>
-                      <option value="digital">Digital Transformation</option>
-                      <option value="assessment">AI Readiness Assessment</option>
-                      <option value="other">Other / General Inquiry</option>
-                    </select>
+                    <div>
+                      <label className="block text-sm text-[#B8C5D6] mb-2">
+                        Service Area
+                      </label>
+                      <select
+                        name="service"
+                        value={formState.service}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white focus:outline-none focus:border-[#1E3A5F] transition-colors"
+                      >
+                        <option value="">Select a service area</option>
+                        <option value="ai-integration">AI Integration</option>
+                        <option value="strategy">Strategy Consulting</option>
+                        <option value="workflow">Workflow Optimization</option>
+                        <option value="digital">Digital Transformation</option>
+                        <option value="assessment">AI Readiness Assessment</option>
+                        <option value="other">Other / General Inquiry</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
@@ -188,9 +288,13 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={5}
+                      maxLength={5000}
                       className="w-full px-4 py-3 bg-[#111827] border border-[#1F2937] text-white placeholder-[#6B7A8F] focus:outline-none focus:border-[#1E3A5F] transition-colors resize-none"
                       placeholder="Tell us about your project or challenge..."
                     />
+                    <p className="text-xs text-[#6B7A8F] mt-1">
+                      {formState.message.length}/5000 characters
+                    </p>
                   </div>
 
                   <button
@@ -276,21 +380,6 @@ export default function ContactPage() {
                         className="text-white hover:text-[#C9A961] transition-colors"
                       >
                         {BUSINESS_INFO.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-[#1E3A5F]/10 flex items-center justify-center flex-shrink-0">
-                      <Phone size={20} className="text-[#C9A961]" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-[#6B7A8F] mb-1">Phone</p>
-                      <a
-                        href={`tel:${BUSINESS_INFO.phone}`}
-                        className="text-white hover:text-[#C9A961] transition-colors"
-                      >
-                        {BUSINESS_INFO.phone}
                       </a>
                     </div>
                   </div>
