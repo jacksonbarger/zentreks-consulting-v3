@@ -16,11 +16,47 @@ import { STATS } from "@/lib/constants";
 
 const LEADERSHIP_TEAM = [
   {
+    name: "Jon Sofield",
+    role: "Founder & Chairman",
+    bio: "A seasoned executive with extensive experience in strategic leadership and business development, Jon co-founded Zentreks to help technology companies unlock their full potential through innovative consulting solutions.",
+    image: "/images/jon-sofield.png",
+    imagePosition: "center 15%",
+    linkedIn: "https://www.linkedin.com/in/jonsofield/",
+  },
+  {
     name: "Graham Wilson",
-    role: "Founder & Principal Consultant",
-    bio: "With 17+ years in enterprise technology—from IT marketing and storage solutions to strategic sales leadership—Graham founded Zentreks to bring Fortune 500-caliber strategy to technology companies of all sizes. Six Sigma & Agile Scrum certified.",
+    role: "Founder & CEO",
+    bio: "With 17+ years in enterprise technology—from IT marketing and storage solutions to strategic sales leadership—Graham co-founded Zentreks to bring Fortune 500-caliber strategy to technology companies of all sizes. Six Sigma & Agile Scrum certified.",
     image: "/images/graham-wilson-200.png",
+    imagePosition: "center 20%",
     linkedIn: "https://www.linkedin.com/in/graham-wilson-83148b/",
+  },
+];
+
+const CONTRIBUTORS = [
+  {
+    name: "Jackson Barger",
+    role: "Consultant: AI Workflow, AEO and Web Optimization",
+    bio: "A bilingual consultant specializing in AI-driven workflow automation and algorithmic enterprise optimization (AEO), Jackson brings a rare blend of healthcare, CRM, and technical implementation expertise. He architected intelligent systems that streamline operations, automate customer journeys, and maximize digital performance. His focus lies in leveraging AI to deliver measurable improvements in web performance, CX automation, and lead-to-conversion efficiency for growth-oriented organizations.",
+    image: "/images/jackson.png",
+    imagePosition: "center 20%",
+    linkedIn: "https://www.linkedin.com/in/jbargerbusiness/",
+  },
+  {
+    name: "Val Heffernan",
+    role: "Consultant: Agentic AI and Social Campaigns",
+    bio: "Val leads Zentreks' work on agentic AI systems—self-directed automations that manage and optimize outreach campaigns at scale. With a deep understanding of AI-driven engagement models, Val designs and deploys intelligent agents to boost conversion rates, accelerate pipeline growth, and reduce manual effort in lead nurturing. His expertise in marketing automation and social campaign design ensures clients gain persistent, data-informed visibility and growth in an increasingly crowded digital space.",
+    image: "/images/val.png",
+    imagePosition: "center 20%",
+    linkedIn: "https://www.linkedin.com/in/val-heffernan-4b823b379/",
+  },
+  {
+    name: "Kelly Davenport, M.Ed., CID, NCIDQ, IIDA",
+    role: "Sr Consultant: Property & Education Systems",
+    bio: "Kelly brings over 15 years of leadership at the intersection of learning, design, and strategy. With deep roots in workplace transformation, education, and interior systems, she helps organizations align their physical environments with operational goals and human needs. At Zentreks, Kelly focuses on property-based systems, facilities strategy, and education sector transformation—bridging people, place, and performance with insight and empathy. Her background spans the California Department of General Services, One Workplace, Herman Miller, and academia.",
+    image: "/images/kelly-davenport.jpeg",
+    imagePosition: "center 30%",
+    linkedIn: "https://www.linkedin.com/in/davenport1/",
   },
 ];
 
@@ -207,13 +243,13 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet the Founder</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Meet the Founders</h2>
             <p className="text-[#B8C5D6] max-w-2xl mx-auto">
-              When you work with Zentreks, you work directly with Graham
+              When you work with Zentreks, you work directly with our founding team
             </p>
           </motion.div>
 
-          <div className="max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {LEADERSHIP_TEAM.map((member, index) => (
               <motion.div
                 key={member.name}
@@ -223,14 +259,15 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-[#111827] border border-[#1F2937] p-8 group hover:border-[#1E3A5F]/50 transition-colors"
               >
-                <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex flex-col items-center text-center">
                   {/* Headshot */}
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-[#C9A961]/30 flex-shrink-0">
+                  <div className="w-44 h-44 rounded-full overflow-hidden border-2 border-[#C9A961]/30 mb-6 transition-transform duration-300 group-hover:scale-105 group-hover:border-[#C9A961]/60">
                     {member.image ? (
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        style={{ objectPosition: member.imagePosition || "center 20%" }}
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-[#1E3A5F] to-[#C9A961] flex items-center justify-center">
@@ -240,10 +277,10 @@ export default function AboutPage() {
                       </div>
                     )}
                   </div>
-                  <div className="text-center md:text-left">
+                  <div>
                     <h3 className="text-2xl font-bold text-white mb-1">{member.name}</h3>
-                    <p className="text-[#C9A961] mb-3">{member.role}</p>
-                    <p className="text-[#B8C5D6] mb-4">{member.bio}</p>
+                    <p className="text-[#C9A961] mb-4">{member.role}</p>
+                    <p className="text-[#B8C5D6] mb-6 text-sm">{member.bio}</p>
                     {member.linkedIn && (
                       <a
                         href={member.linkedIn}
@@ -252,6 +289,75 @@ export default function AboutPage() {
                         className="inline-flex items-center gap-2 text-[#C9A961] hover:text-white transition-colors"
                       >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        Connect on LinkedIn
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contributors Section */}
+      <section className="py-16 bg-[#111827]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Our Team</h2>
+            <p className="text-[#B8C5D6] max-w-2xl mx-auto">
+              Expert consultants who help deliver results for our clients
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {CONTRIBUTORS.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-[#0B1120] border border-[#1F2937] p-8 group hover:border-[#1E3A5F]/50 transition-colors"
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Headshot */}
+                  <div className="w-40 h-40 rounded-full overflow-hidden border-2 border-[#C9A961]/30 mb-6 transition-transform duration-300 group-hover:scale-105 group-hover:border-[#C9A961]/60">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        style={{ objectPosition: member.imagePosition || "center 20%" }}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#1E3A5F] to-[#C9A961] flex items-center justify-center">
+                        <span className="text-white text-2xl font-bold">
+                          {member.name.split(" ").map((n) => n[0]).join("")}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">{member.name}</h3>
+                    <p className="text-[#C9A961] mb-4 text-sm font-medium">{member.role}</p>
+                    <p className="text-[#B8C5D6] mb-6 text-sm leading-relaxed">{member.bio}</p>
+                    {member.linkedIn && (
+                      <a
+                        href={member.linkedIn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-[#C9A961] hover:text-white transition-colors text-sm font-medium"
+                      >
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                         Connect on LinkedIn
