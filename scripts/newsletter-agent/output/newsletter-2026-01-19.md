@@ -175,6 +175,6 @@ All articles at a glance:
 We help businesses navigate the AI revolution with strategic consulting,
 implementation services, and ongoing support.
 
-[Visit our website](https://zentreks.com) | [Contact us](mailto:hello@zentreks.com)
+[Visit our website](https://zentreksconsulting.com) | [Contact us](mailto:contact@zentreksconsulting.com)
 
 *This newsletter was automatically generated. Commentary and insights are added by our team.*

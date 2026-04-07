@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   title: "Zentreks Consulting | Strategic Consulting Since 2008",
   description: "Zentreks Consulting has been helping technology companies with their toughest business challenges for over 15 years. Expert guidance in AI integration, workflow optimization, and digital transformation.",
   keywords: ["consulting", "AI", "strategy", "digital transformation", "business consulting", "tech startups", "MarTech", "enterprise technology"],
+  metadataBase: new URL("https://zentreks-consulting-v3.vercel.app"),
+  openGraph: {
+    title: "Zentreks Consulting | Strategic Consulting Since 2008",
+    description: "Helping technology companies with their toughest business challenges for over 15 years. AI integration, strategy, and digital transformation.",
+    siteName: "Zentreks Consulting",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Zentreks Consulting | Strategic Consulting Since 2008",
+    description: "Helping technology companies with their toughest business challenges for over 15 years.",
+  },
 };
 
 export default function RootLayout({

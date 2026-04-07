@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { NAV_ITEMS, BUSINESS_INFO } from "@/lib/constants";
 import PromoBanner from "./PromoBanner";
 
@@ -96,9 +96,6 @@ export default function Header() {
 
             {/* Right side actions */}
             <div className="flex items-center gap-4">
-              <button className="p-2 text-[#C4B8B8] hover:text-white transition-colors">
-                <Search size={20} />
-              </button>
               <Link href="/contact" className="hidden sm:block btn-primary text-sm py-2 px-4">
                 Get Started
               </Link>

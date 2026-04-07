@@ -404,7 +404,7 @@ export default function EventsPage() {
       </AnimatePresence>
 
       {/* CTA Section */}
-      <section className="py-16 bg-[#111827]">
+      <section id="newsletter" className="py-16 bg-[#111827]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

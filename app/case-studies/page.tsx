@@ -9,7 +9,7 @@ const CASE_STUDIES = [
   {
     category: "Workflow",
     industry: "Retail Technology",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
     title: "Retail Space SaaS Platform: From Paper to Platform",
     description: "Digitized retail space operations to create a modern, scalable SaaS product—built for efficiency, growth, and seamless client engagement.",
     metrics: [
@@ -22,7 +22,7 @@ const CASE_STUDIES = [
   {
     category: "AI Integration",
     industry: "E-Commerce",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
     title: "Revenue Doubled Without Increasing Ad Spend",
     description: "Transformed marketing and e-commerce to double revenue in one year—through AI-powered automation and retention strategies.",
     metrics: [
@@ -35,7 +35,7 @@ const CASE_STUDIES = [
   {
     category: "Digital Transformation",
     industry: "Energy / Utilities",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1548613053-22087dd8edb8?w=800&q=80",
     title: "UK Energy Brokerage: Multi-Utility Platform Build",
     description: "Rebuilt commercial systems for a UK-based energy brokerage—enabling faster onboarding, accurate billing, and frictionless multi-utility operations.",
     metrics: [
@@ -48,7 +48,7 @@ const CASE_STUDIES = [
   {
     category: "AI Strategy",
     industry: "Civic Tech / Media",
-    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&q=80",
     title: "AI-Driven Market Expansion for National Civic Platform",
     description: "Used data intelligence and AI to expand a civics platform from local activism to a national force—reaching underrepresented communities and doubling engagement.",
     metrics: [

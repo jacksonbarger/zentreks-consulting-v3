@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Twitter, Youtube } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { BUSINESS_INFO, FOOTER_LINKS } from "@/lib/constants";
 
 export default function Footer() {
@@ -25,31 +25,15 @@ export default function Footer() {
             <p className="text-[#8A7A7A] mb-6 max-w-sm">
               {BUSINESS_INFO.description}. We bring enterprise-level expertise and proven strategies to technology companies ready for transformation.
             </p>
-            {/* Social Links - Updated colors */}
+            {/* Social Links */}
             <div className="flex gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/zentreks-consulting/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#141414] rounded flex items-center justify-center text-[#8A7A7A] hover:text-[#D4A574] hover:bg-[#1E1E1E] transition-colors"
               >
                 <Linkedin size={20} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#141414] rounded flex items-center justify-center text-[#8A7A7A] hover:text-[#D4A574] hover:bg-[#1E1E1E] transition-colors"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-[#141414] rounded flex items-center justify-center text-[#8A7A7A] hover:text-[#D4A574] hover:bg-[#1E1E1E] transition-colors"
-              >
-                <Youtube size={20} />
               </a>
             </div>
           </div>

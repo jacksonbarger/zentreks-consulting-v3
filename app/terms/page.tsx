@@ -93,8 +93,8 @@ export default function TermsPage() {
                 <h2 className="text-2xl font-bold text-white mb-4">9. Contact</h2>
                 <p>
                   For questions about these Terms of Service, please contact us at{" "}
-                  <a href="mailto:legal@zentreks.com" className="text-[#C9A961] hover:text-white">
-                    legal@zentreks.com
+                  <a href="mailto:legal@zentreksconsulting.com" className="text-[#C9A961] hover:text-white">
+                    legal@zentreksconsulting.com
                   </a>
                 </p>
               </section>

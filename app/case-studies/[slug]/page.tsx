@@ -44,7 +44,7 @@ const CASE_STUDIES: Record<string, {
     category: "Workflow Optimization",
     industry: "Retail Technology",
     duration: "12 months",
-    heroImage: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80",
     galleryImages: [
       { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", caption: "Dashboard Analytics" },
       { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", caption: "Client Onboarding Portal" }
@@ -93,7 +93,7 @@ const CASE_STUDIES: Record<string, {
     category: "AI Integration",
     industry: "E-Commerce / Manufacturing",
     duration: "18 months",
-    heroImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&q=80",
     galleryImages: [
       { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", caption: "Predictive Analytics Dashboard" },
       { src: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", caption: "Inventory Management System" }
@@ -142,7 +142,7 @@ const CASE_STUDIES: Record<string, {
     category: "Digital Transformation",
     industry: "Energy Services",
     duration: "14 months",
-    heroImage: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1548613053-22087dd8edb8?w=1200&q=80",
     galleryImages: [
       { src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80", caption: "Partner Dashboard" },
       { src: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", caption: "Customer Journey Mapping" }
@@ -191,7 +191,7 @@ const CASE_STUDIES: Record<string, {
     category: "AI Strategy",
     industry: "Civic Technology",
     duration: "10 months",
-    heroImage: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1200&q=80",
+    heroImage: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=1200&q=80",
     galleryImages: [
       { src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80", caption: "Audience Segmentation" },
       { src: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80", caption: "Campaign Analytics" }

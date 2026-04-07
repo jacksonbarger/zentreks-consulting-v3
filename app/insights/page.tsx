@@ -11,7 +11,7 @@ const FEATURED_INSIGHT = {
   description: "Our latest research reveals that organizations with mature AI capabilities are seeing 40% higher productivity gains. Learn what separates AI leaders from the rest.",
   date: "January 12, 2026",
   readTime: "8 min read",
-  image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+  image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
   href: "/insights/ai-dividend-age",
 };
 
@@ -23,6 +23,7 @@ const INSIGHTS = [
     date: "Jan 10, 2026",
     readTime: "6 min",
     href: "/insights/ai-strategy-2026",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80",
   },
   {
     category: "Digital Transformation",
@@ -31,6 +32,7 @@ const INSIGHTS = [
     date: "Jan 8, 2026",
     readTime: "5 min",
     href: "/insights/future-of-work",
+    image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80",
   },
   {
     category: "Market Trends",
@@ -39,6 +41,7 @@ const INSIGHTS = [
     date: "Jan 5, 2026",
     readTime: "7 min",
     href: "/insights/economic-outlook-2026",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80",
   },
   {
     category: "Healthcare",
@@ -47,6 +50,7 @@ const INSIGHTS = [
     date: "Jan 3, 2026",
     readTime: "6 min",
     href: "/insights/ai-healthcare",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&q=80",
   },
   {
     category: "Financial Services",
@@ -55,6 +59,7 @@ const INSIGHTS = [
     date: "Dec 28, 2025",
     readTime: "5 min",
     href: "/insights/ai-risk-management",
+    image: "https://images.unsplash.com/photo-1590402494610-2c378a9114c6?w=600&q=80",
   },
   {
     category: "Manufacturing",
@@ -63,6 +68,7 @@ const INSIGHTS = [
     date: "Dec 22, 2025",
     readTime: "8 min",
     href: "/insights/industry-4-lessons",
+    image: "https://images.unsplash.com/photo-1488229297570-58520851e868?w=600&q=80",
   },
 ];
 
@@ -182,19 +188,35 @@ export default function InsightsPage() {
               >
                 <Link
                   href={insight.href}
-                  className="block bg-[#111827] border border-[#1F2937] p-6 h-full hover:border-[#1E3A5F]/50 transition-all group"
+                  className="block bg-[#111827] border border-[#1F2937] h-full hover:border-[#1E3A5F]/50 transition-all group overflow-hidden"
                 >
-                  <div className="text-xs text-[#C9A961] mb-3">{insight.category}</div>
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#C9A961] transition-colors line-clamp-2">
-                    {insight.title}
-                  </h3>
-                  <p className="text-sm text-[#6B7A8F] mb-4 line-clamp-3">{insight.description}</p>
-                  <div className="flex items-center justify-between text-xs text-[#6B7A8F]">
-                    <span>{insight.date}</span>
-                    <span className="flex items-center gap-1">
-                      <Clock size={12} />
-                      {insight.readTime}
-                    </span>
+                  {/* Article Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={insight.image}
+                      alt={insight.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent" />
+                    <div className="absolute top-3 left-3">
+                      <span className="text-xs bg-[#1E3A5F] text-white px-2 py-1 font-medium">
+                        {insight.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#C9A961] transition-colors line-clamp-2">
+                      {insight.title}
+                    </h3>
+                    <p className="text-sm text-[#6B7A8F] mb-4 line-clamp-2">{insight.description}</p>
+                    <div className="flex items-center justify-between text-xs text-[#6B7A8F]">
+                      <span>{insight.date}</span>
+                      <span className="flex items-center gap-1">
+                        <Clock size={12} />
+                        {insight.readTime}
+                      </span>
+                    </div>
                   </div>
                 </Link>
               </motion.article>

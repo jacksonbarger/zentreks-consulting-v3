@@ -4,8 +4,7 @@ export const BUSINESS_INFO = {
   description: "Strategic consulting since 2008 for technology companies",
   foundedYear: 2008,
   yearsExperience: "15+",
-  email: "contact@zentreks.com",
-  phone: "(555) 123-4567",
+  email: "contact@zentreksconsulting.com",
   freeConsultation: "Free 30-Minute Strategy Session",
   targetAudience: ["Tech Startups", "MarTechs", "Enterprise Technology"],
   heroHeadline: "Strategic consulting since 2008.",
@@ -112,28 +111,28 @@ export const CASE_STUDIES = [
     category: "Workflow",
     title: "Retail Space SaaS Platform: From Paper to Platform",
     description: "Digitized retail space operations to create a modern, scalable SaaS product—built for efficiency, growth, and seamless client engagement.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
     href: "/case-studies/retail-saas-platform",
   },
   {
     category: "AI Integration",
     title: "Revenue Doubled Without Increasing Ad Spend",
     description: "Transformed marketing and e-commerce to double revenue in one year—through AI-powered automation and retention strategies.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
     href: "/case-studies/commercial-equipment",
   },
   {
     category: "Digital",
     title: "UK Energy Brokerage: Multi-Utility Platform Build",
     description: "Rebuilt commercial systems for a UK-based energy brokerage—enabling faster onboarding, accurate billing, and frictionless multi-utility operations.",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1548613053-22087dd8edb8?w=800&q=80",
     href: "/case-studies/utility-brokerage",
   },
   {
     category: "AI Strategy",
     title: "AI-Driven Market Expansion for National Civic Platform",
     description: "Used data intelligence and AI to expand a civics platform from local activism to a national force—reaching underrepresented communities and doubling engagement.",
-    image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=800&q=80",
     href: "/case-studies/civic-engagement",
   },
 ];
@@ -160,7 +159,7 @@ export const FOOTER_LINKS = {
   resources: [
     { label: "Insights", href: "/insights" },
     { label: "Case Studies", href: "/case-studies" },
-    { label: "Newsletter", href: "/newsletter" },
+    { label: "Newsletter", href: "/events#newsletter" },
     { label: "Events", href: "/events" },
   ],
   legal: [
@@ -171,9 +170,7 @@ export const FOOTER_LINKS = {
 };
 
 export const SOCIAL_LINKS = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
-  { label: "Twitter", href: "https://twitter.com", icon: "Twitter" },
-  { label: "YouTube", href: "https://youtube.com", icon: "Youtube" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/zentreks-consulting/", icon: "Linkedin" },
 ];
 
 // What We Do section content from Webflow
@@ -194,28 +191,40 @@ export const MISSION = {
   statement: "Our mission is to provide strategic insights, innovative solutions, and exceptional support that enable our clients to navigate complex challenges, optimize their operations, and achieve their business objectives.",
 };
 
-// Thought Leadership categories for video section
+// Thought Leadership articles for homepage section
 export const THOUGHT_LEADERSHIP = {
   heading: "Our Latest Insights",
   subheading: "Thought Leadership in Strategy",
-  categories: [
+  articles: [
     {
-      title: "Disruptive Product Strategies",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-      href: "/insights/category/product-strategy",
+      category: "AI Strategy",
+      title: "The dividend age: How AI investments are turning into real business value",
+      description: "Organizations with mature AI capabilities are seeing 40% higher productivity gains. Learn what separates AI leaders from the rest.",
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+      href: "/insights",
+      date: "Jan 12, 2026",
+      readTime: "8 min read",
     },
     {
-      title: "Sales & Marketing Strategies",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80",
-      href: "/insights/category/sales-marketing",
+      category: "Digital Transformation",
+      title: "The future of work: Automation meets human potential",
+      description: "Explore how automation is creating new opportunities for workforce development and organizational growth.",
+      image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80",
+      href: "/insights",
+      date: "Jan 8, 2026",
+      readTime: "5 min read",
     },
     {
-      title: "Strategic Business Initiatives",
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600&q=80",
-      href: "/insights/category/strategic-initiatives",
+      category: "Market Trends",
+      title: "2026 Economic outlook: Navigating uncertainty with data-driven strategies",
+      description: "Our analysis of global economic trends and strategic recommendations for technology leaders.",
+      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80",
+      href: "/insights",
+      date: "Jan 5, 2026",
+      readTime: "7 min read",
     },
   ],
-  cta: "View All Videos",
+  cta: "View All Insights",
   ctaHref: "/insights",
 };
 
@@ -351,7 +360,7 @@ export const EVENTS = [
     eventType: "conference" as const,
     registrationUrl: "https://aiconusa.com/",
     isFree: false,
-    image: "https://images.unsplash.com/photo-1502217624568-a8f7ff0ef9fc?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
     region: "Washington",
     month: "June",
     startDate: "2026-06-07",

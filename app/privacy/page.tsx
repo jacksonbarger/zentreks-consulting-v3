@@ -74,8 +74,8 @@ export default function PrivacyPage() {
                 <h2 className="text-2xl font-bold text-white mb-4">7. Contact Us</h2>
                 <p>
                   If you have questions about this Privacy Policy, please contact us at{" "}
-                  <a href="mailto:privacy@zentreks.com" className="text-[#C9A961] hover:text-white">
-                    privacy@zentreks.com
+                  <a href="mailto:privacy@zentreksconsulting.com" className="text-[#C9A961] hover:text-white">
+                    privacy@zentreksconsulting.com
                   </a>
                 </p>
               </section>

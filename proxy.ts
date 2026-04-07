@@ -53,7 +53,7 @@ function buildCSP(): string {
     .join("; ");
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
   // Apply security headers

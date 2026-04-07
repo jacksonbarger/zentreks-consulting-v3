@@ -25,7 +25,7 @@ const ARTICLES: Record<string, {
     date: "January 12, 2026",
     readTime: "8 min read",
     author: "Zentreks Research Team",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&q=80",
     description: "Our latest research reveals that organizations with mature AI capabilities are seeing 40% higher productivity gains.",
     content: [
       "The era of AI experimentation is giving way to the age of AI dividends. After years of investment in artificial intelligence capabilities, leading organizations are now seeing substantial returns that are reshaping competitive dynamics across industries. Our latest research, conducted across 500 enterprises globally, reveals that companies with mature AI implementations are experiencing productivity gains 40% higher than their peers.",
@@ -52,7 +52,7 @@ const ARTICLES: Record<string, {
     date: "January 10, 2026",
     readTime: "6 min read",
     author: "Dr. Sarah Chen, Chief Strategy Officer",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80",
     description: "Discover how leading companies are leveraging AI to gain competitive advantage and transform their operations.",
     content: [
       "Business strategy in 2026 looks fundamentally different than it did just five years ago, and artificial intelligence is the primary driver of this transformation. The most successful companies are no longer asking whether to incorporate AI into their strategy—they're asking how to make AI the foundation upon which their entire competitive approach is built.",
@@ -79,7 +79,7 @@ const ARTICLES: Record<string, {
     date: "January 8, 2026",
     readTime: "5 min read",
     author: "Marcus Williams, Workforce Strategy Lead",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=1200&q=80",
     description: "Explore how automation is creating new opportunities for workforce development and organizational growth.",
     content: [
       "The conversation about automation and work has shifted dramatically. Where early discussions focused on job displacement and technological unemployment, today's leading organizations are discovering that the most powerful applications of automation actually amplify human capabilities rather than replace them. This human-machine collaboration is creating unprecedented opportunities for both productivity and job satisfaction.",
@@ -106,7 +106,7 @@ const ARTICLES: Record<string, {
     date: "January 5, 2026",
     readTime: "7 min read",
     author: "Dr. James Morrison, Chief Economist",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80",
     description: "Our analysis of global economic trends and strategic recommendations for business leaders.",
     content: [
       "As we enter 2026, the global economic landscape presents a complex mix of opportunities and challenges. While technological innovation continues to drive productivity gains and create new markets, businesses must navigate persistent uncertainty around geopolitical tensions, supply chain resilience, and the ongoing transition to sustainable business models. Our analysis suggests that organizations with strong fundamentals and adaptive capabilities will thrive, while those slow to adjust may struggle.",
@@ -133,7 +133,7 @@ const ARTICLES: Record<string, {
     date: "January 3, 2026",
     readTime: "6 min read",
     author: "Dr. Emily Roberts, Healthcare Practice Lead",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200&q=80",
     description: "How healthcare organizations are using AI to improve patient outcomes and reduce costs.",
     content: [
       "Healthcare is experiencing an AI revolution that promises to fundamentally transform how we diagnose, treat, and manage disease. From early detection of cancer through imaging analysis to personalized treatment recommendations based on genetic profiles, AI is enabling levels of precision and efficiency that were unimaginable just a few years ago. The organizations leading this transformation are achieving remarkable results: improved patient outcomes, reduced costs, and enhanced access to care.",
@@ -160,7 +160,7 @@ const ARTICLES: Record<string, {
     date: "December 28, 2025",
     readTime: "5 min read",
     author: "Michael Chang, Financial Services Practice Lead",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1590402494610-2c378a9114c6?w=1200&q=80",
     description: "Financial institutions are revolutionizing risk assessment with machine learning models.",
     content: [
       "Risk management is being transformed by artificial intelligence, and financial institutions are leading the charge. Traditional risk models, built on historical data and linear assumptions, are giving way to sophisticated machine learning systems that can identify patterns and predict risks that humans might miss. The result is more accurate risk assessment, faster decision-making, and better protection against both known and emerging threats.",
@@ -187,7 +187,7 @@ const ARTICLES: Record<string, {
     date: "December 22, 2025",
     readTime: "8 min read",
     author: "Thomas Anderson, Manufacturing Practice Lead",
-    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1488229297570-58520851e868?w=1200&q=80",
     description: "What successful smart factory implementations can teach us about digital transformation.",
     content: [
       "The promise of Industry 4.0—smart factories powered by IoT, AI, and advanced automation—has captivated manufacturing leaders for years. Now, as early adopters move from pilot projects to scaled implementations, we can draw concrete lessons about what works, what doesn't, and what separates successful transformations from failed experiments. The insights from these pioneers offer a roadmap for manufacturers beginning their Industry 4.0 journey.",
