@@ -95,7 +95,7 @@ const CASE_STUDIES: Record<string, {
     duration: "18 months",
     heroImage: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&q=80",
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", caption: "Predictive Analytics Dashboard" },
+      { src: "https://images.unsplash.com/photo-1642104704074-907c0698cbd9?w=800&q=80", caption: "Predictive Analytics Dashboard" },
       { src: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80", caption: "Inventory Management System" }
     ],
     description: "Transformed marketing and e-commerce to double revenue in one year—through AI-powered automation and retention strategies that maximized customer lifetime value.",

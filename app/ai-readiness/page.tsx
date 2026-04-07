@@ -26,6 +26,8 @@ export default function AIReadinessPage() {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [email, setEmail] = useState("");
   const [showEmailCapture, setShowEmailCapture] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const totalQuestions = QUESTIONNAIRE_QUESTIONS.length;
   const progress = ((currentQuestion + 1) / totalQuestions) * 100;
@@ -50,9 +52,35 @@ export default function AIReadinessPage() {
     return Object.values(answers).reduce((sum, score) => sum + score, 0);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setState("results");
+    setSubmitError(null);
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          source: "lead-magnet",
+          leadMagnet: "ai-readiness-checklist",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setSubmitError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+
+      setState("results");
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
+      setSubmitting(false);
+    }
   };
 
   const skipEmail = () => {
@@ -64,6 +92,8 @@ export default function AIReadinessPage() {
     setCurrentQuestion(0);
     setEmail("");
     setShowEmailCapture(false);
+    setSubmitError(null);
+    setSubmitting(false);
     setState("intro");
   };
 
@@ -170,8 +200,8 @@ export default function AIReadinessPage() {
                     Almost there!
                   </h3>
                   <p className="text-[#B8C5D6] mb-6">
-                    [EMAIL CAPTURE TEXT FROM YOUR FILES] - Enter your email to receive your
-                    personalized AI readiness report and recommendations.
+                    Enter your email to receive your personalized AI readiness report
+                    plus our AI Readiness Checklist delivered to your inbox.
                   </p>
                   <form onSubmit={handleSubmit}>
                     <input
@@ -179,17 +209,26 @@ export default function AIReadinessPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your work email"
-                      className="w-full px-4 py-3 bg-[#0B1120] border border-[#1F2937] text-white placeholder-[#6B7A8F] mb-4 focus:outline-none focus:border-[#1E3A5F]"
+                      className="w-full px-4 py-3 bg-[#0B1120] border border-[#1F2937] text-white placeholder-[#6B7A8F] mb-4 focus:outline-none focus:border-[#1E3A5F] disabled:opacity-50"
                       required
+                      disabled={submitting}
                     />
-                    <button type="submit" className="btn-primary w-full mb-3">
-                      Get My Results
-                      <ArrowRight size={18} className="ml-2" />
+                    {submitError && (
+                      <p className="text-sm text-[#C4251D] mb-3">{submitError}</p>
+                    )}
+                    <button
+                      type="submit"
+                      className="btn-primary w-full mb-3 disabled:opacity-60"
+                      disabled={submitting}
+                    >
+                      {submitting ? "Sending..." : "Get My Results"}
+                      {!submitting && <ArrowRight size={18} className="ml-2" />}
                     </button>
                     <button
                       type="button"
                       onClick={skipEmail}
-                      className="w-full text-[#6B7A8F] hover:text-white transition-colors text-sm"
+                      disabled={submitting}
+                      className="w-full text-[#6B7A8F] hover:text-white transition-colors text-sm disabled:opacity-50"
                     >
                       Skip and view results
                     </button>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { STATS, BUSINESS_INFO } from "@/lib/constants";
 
 export default function HeroSection() {
@@ -57,10 +57,10 @@ export default function HeroSection() {
               {BUSINESS_INFO.heroCTA}
               <ArrowRight size={20} className="ml-2" />
             </Link>
-            <button className="btn-secondary text-lg px-8 py-4 group">
-              <Play size={20} className="mr-2" />
-              Watch Overview
-            </button>
+            <Link href="/case-studies" className="btn-secondary text-lg px-8 py-4 group inline-flex items-center justify-center">
+              <BookOpen size={20} className="mr-2" />
+              See Our Work
+            </Link>
           </motion.div>
 
           {/* Stats Row */}

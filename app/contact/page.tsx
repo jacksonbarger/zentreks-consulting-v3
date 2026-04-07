@@ -333,35 +333,16 @@ export default function ContactPage() {
                   discuss your specific needs and explore how we can help.
                 </p>
 
-                {/* Calendly Embed Placeholder */}
-                <div className="bg-[#1F2937] border border-[#1F2937] p-8 text-center">
-                  <Calendar size={40} className="text-[#6B7A8F] mx-auto mb-4" />
-                  <p className="text-[#6B7A8F] text-sm mb-4">
-                    Calendly booking widget will appear here
-                  </p>
-                  <p className="text-xs text-[#6B7A8F] mb-4">
-                    Replace CALENDLY_URL in this component with your actual Calendly link
-                  </p>
-                  {/*
-                    TO ENABLE CALENDLY:
-                    1. Replace the placeholder div above with:
-                    <iframe
-                      src="https://calendly.com/YOUR_USERNAME/30min"
-                      width="100%"
-                      height="600"
-                      frameBorder="0"
-                    />
-                    2. Or use the Calendly inline widget script
-                  */}
-                  <a
-                    href="https://calendly.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-flex"
-                  >
-                    Schedule a Call
-                    <ArrowRight size={18} className="ml-2" />
-                  </a>
+                {/* Cal.com Inline Embed */}
+                <div className="bg-[#0B1120] border border-[#1F2937]">
+                  <iframe
+                    src={`https://cal.com/${process.env.NEXT_PUBLIC_CAL_LINK || "zentreks/consultation"}?embed=true&theme=dark`}
+                    width="100%"
+                    height="650"
+                    frameBorder="0"
+                    title="Book a consultation with Zentreks"
+                    className="w-full"
+                  />
                 </div>
               </div>
 

@@ -402,7 +402,7 @@ export const EVENTS = [
     eventType: "conference" as const,
     registrationUrl: "https://openai.com/",
     isFree: false,
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=80",
     region: "California",
     month: "October",
     startDate: "2026-10-15",
