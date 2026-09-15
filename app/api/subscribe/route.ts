@@ -89,7 +89,10 @@ async function addToConvertKit(data: SubscribeData): Promise<{ success: boolean;
 // Send lead magnet delivery email via Resend
 async function sendLeadMagnetEmail(email: string, leadMagnet: string): Promise<boolean> {
   const resendApiKey = process.env.RESEND_API_KEY;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zentreksconsulting.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://zentreks.ai";
+  // Must be a domain verified in Resend - see NOTIFICATION_FROM in .env.example.
+  const fromAddress =
+    process.env.NOTIFICATION_FROM || "Zentreks <noreply@send.zentreks.ai>";
 
   if (!resendApiKey) {
     console.warn("RESEND_API_KEY not configured - skipping lead magnet delivery");
@@ -122,8 +125,9 @@ async function sendLeadMagnetEmail(email: string, leadMagnet: string): Promise<b
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Graham at Zentreks <graham@zentreksconsulting.com>",
+        from: fromAddress,
         to: safeEmail,
+        reply_to: "graham.wilson@zentreks.ai",
         subject: `Your ${safeTitle} is ready!`,
         html: `
           <h2>Here's your ${safeTitle}!</h2>

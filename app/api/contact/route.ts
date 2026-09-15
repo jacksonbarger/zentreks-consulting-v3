@@ -74,13 +74,33 @@ function validateFormData(data: ContactFormData): string[] {
 }
 
 // Send email notification via Resend
-async function sendEmailNotification(data: ContactFormData): Promise<boolean> {
+async function sendEmailNotification(
+  data: ContactFormData
+): Promise<{ sent: boolean; reason?: string }> {
   const resendApiKey = process.env.RESEND_API_KEY;
-  const notificationEmail = process.env.NOTIFICATION_EMAIL || "contact@zentreksconsulting.com";
+  // Comma-separated list. Both founders are notified by default.
+  const notificationEmail =
+    process.env.NOTIFICATION_EMAIL ||
+    "jackson.barger@zentreks.ai,graham.wilson@zentreks.ai";
+  // Must be a domain verified in Resend. zentreks.ai root carries the Google
+  // Workspace SPF record, so sending is delegated to the send.zentreks.ai subdomain.
+  const fromAddress =
+    process.env.NOTIFICATION_FROM || "Zentreks Website <noreply@send.zentreks.ai>";
+
+  const recipients = notificationEmail
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
 
   if (!resendApiKey) {
-    console.warn("RESEND_API_KEY not configured - skipping email notification");
-    return true;
+    // Not a warning: with no key the enquiry reaches nobody.
+    console.error("RESEND_API_KEY not configured - contact notification cannot be sent");
+    return { sent: false, reason: "resend_not_configured" };
+  }
+
+  if (recipients.length === 0) {
+    console.error("NOTIFICATION_EMAIL resolved to an empty recipient list");
+    return { sent: false, reason: "no_recipients" };
   }
 
   // Sanitize all user inputs for HTML email
@@ -98,8 +118,8 @@ async function sendEmailNotification(data: ContactFormData): Promise<boolean> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Zentreks Contact Form <noreply@zentreksconsulting.com>",
-        to: notificationEmail,
+        from: fromAddress,
+        to: recipients,
         subject: `New Contact Form Submission from ${safeFirstName} ${safeLastName}`,
         html: `
           <h2>New Contact Form Submission</h2>
@@ -122,13 +142,13 @@ async function sendEmailNotification(data: ContactFormData): Promise<boolean> {
     if (!response.ok) {
       const errorData = await response.json();
       console.error("Resend API error:", errorData);
-      return false;
+      return { sent: false, reason: `resend_error_${response.status}` };
     }
 
-    return true;
+    return { sent: true };
   } catch (error) {
     console.error("Failed to send email notification:", error);
-    return false;
+    return { sent: false, reason: "resend_request_failed" };
   }
 }
 
@@ -257,7 +277,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email notification and add to CRM in parallel
-    const [emailSent, addedToCRM] = await Promise.all([
+    const [emailResult, addedToCRM] = await Promise.all([
       sendEmailNotification(body),
       addToConvertKit(body),
     ]);
@@ -267,10 +287,34 @@ export async function POST(request: NextRequest) {
       event: "contact_form_submission",
       correlationId,
       hasCompany: !!body.company,
-      emailSent,
+      emailSent: emailResult.sent,
+      emailFailureReason: emailResult.reason,
       addedToCRM,
       timestamp: new Date().toISOString(),
     }));
+
+    // Never report success when the enquiry did not actually reach anyone.
+    // Previously this returned success regardless, so failed sends looked
+    // identical to delivered ones and the lead was lost silently.
+    if (!emailResult.sent) {
+      console.error(JSON.stringify({
+        event: "contact_notification_failed",
+        correlationId,
+        reason: emailResult.reason,
+        addedToCRM,
+        timestamp: new Date().toISOString(),
+      }));
+
+      return NextResponse.json(
+        {
+          success: false,
+          message:
+            "We couldn't deliver your message. Please email us directly at jackson.barger@zentreks.ai and we'll get straight back to you.",
+          correlationId,
+        },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json(
       {

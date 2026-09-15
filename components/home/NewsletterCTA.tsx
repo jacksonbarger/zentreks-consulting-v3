@@ -77,7 +77,10 @@ export default function NewsletterCTA() {
             {/* Form */}
             <form onSubmit={handleSubmit} className="w-full md:w-auto">
               {/* Honeypot field - hidden from users */}
-              <div className="absolute -left-[9999px]" aria-hidden="true">
+              <div
+                className="absolute -left-[9999px] w-px h-px overflow-hidden"
+                aria-hidden="true"
+              >
                 <label htmlFor="newsletter-website">Website</label>
                 <input
                   type="text"

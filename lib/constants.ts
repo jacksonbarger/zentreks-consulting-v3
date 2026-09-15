@@ -4,7 +4,9 @@ export const BUSINESS_INFO = {
   description: "Strategic consulting since 2008 for technology companies",
   foundedYear: 2008,
   yearsExperience: "15+",
-  email: "contact@zentreksconsulting.com",
+  // zentreksconsulting.com has no MX records - mail to it is undeliverable.
+  // Swap to a contact@zentreks.ai alias once that alias exists in Workspace.
+  email: "jackson.barger@zentreks.ai",
   freeConsultation: "Free 30-Minute Strategy Session",
   targetAudience: ["Tech Startups", "MarTechs", "Enterprise Technology"],
   heroHeadline: "Strategic consulting since 2008.",

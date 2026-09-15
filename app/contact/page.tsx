@@ -176,7 +176,10 @@ export default function ContactPage() {
                   )}
 
                   {/* Honeypot field - hidden from users */}
-                  <div className="absolute -left-[9999px]" aria-hidden="true">
+                  <div
+                    className="absolute -left-[9999px] w-px h-px overflow-hidden"
+                    aria-hidden="true"
+                  >
                     <label htmlFor="website">Website</label>
                     <input
                       type="text"
